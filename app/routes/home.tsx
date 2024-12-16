@@ -1,6 +1,13 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 
+export async function loader() {
+  // wait 5 seconds
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
+  return { message: "hello world" };
+}
+
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "New React Router App" },
@@ -8,6 +15,13 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  return <Welcome />;
+export default function Home({ loaderData }: any) {
+  const { message } = loaderData;
+
+  return (
+    <>
+      {message}
+      <Welcome />;
+    </>
+  );
 }
