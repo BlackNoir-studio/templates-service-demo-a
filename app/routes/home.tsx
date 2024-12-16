@@ -3,10 +3,7 @@ import { Welcome } from "../welcome/welcome";
 import { Button } from "@nextui-org/react";
 
 export async function loader() {
-  // wait 5 seconds
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-
-  return { message: "hello world" };
+  return { message: "label from loader" };
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -22,7 +19,7 @@ export default function Home({ loaderData }: any) {
   return (
     <>
       <Button color="primary">{message}</Button>
-      <Welcome />;
+      <Welcome />
     </>
   );
 }
