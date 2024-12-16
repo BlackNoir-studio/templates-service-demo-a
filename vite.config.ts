@@ -11,4 +11,5 @@ export default defineConfig({
     },
   },
   plugins: [reactRouter(), tsconfigPaths()],
+  base: process.env.BASE_URL || "",
 });
