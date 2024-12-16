@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import { Button } from "@nextui-org/react";
 
 export async function loader() {
   // wait 5 seconds
@@ -20,7 +21,7 @@ export default function Home({ loaderData }: any) {
 
   return (
     <>
-      {message}
+      <Button color="primary">{message}</Button>
       <Welcome />;
     </>
   );

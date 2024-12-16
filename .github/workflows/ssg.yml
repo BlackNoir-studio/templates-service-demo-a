@@ -66,9 +66,7 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Set BASE_URL environment variable
-        run: echo "BASE_URL=${{ steps.pages.outputs.base_path }}/" >> $GITHUB_ENV
-      - name: Build with Astro
+      - name: Build with React Router
         run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
