@@ -1,9 +1,11 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
 import { Button } from "@nextui-org/react";
+import $fetch from "lib/fetch";
 
 export async function loader() {
-  return { message: "label from loader" };
+  const { data } = await $fetch("/settings");
+  return { message: data.project_name };
 }
 
 export function meta({}: Route.MetaArgs) {
@@ -18,8 +20,7 @@ export default function Home({ loaderData }: any) {
 
   return (
     <>
-      <Button color="primary">{message}</Button>
-      <Welcome />
+      <Welcome title={message} />
     </>
   );
 }
