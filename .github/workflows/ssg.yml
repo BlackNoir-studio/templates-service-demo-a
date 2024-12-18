@@ -9,6 +9,10 @@ on:
   push:
     branches: ["main"]
 
+  # Allows to run this workflow on post request
+  repository_dispatch:
+    types: ["remote_deploy"]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
