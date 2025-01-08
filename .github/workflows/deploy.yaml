@@ -50,11 +50,12 @@ jobs:
       deployments: write
     name: Deploy to Cloudflare Pages
     steps:
-      - name: Publish
-        uses: cloudflare/pages-action@v1
+      - uses: actions/checkout@v4
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: disto
-          directory: ${{ env.BUILD_PATH }}/build/client 
+          command: pages deploy ${{ env.BUILD_PATH }}/build/client --project-name=disto
+          # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
