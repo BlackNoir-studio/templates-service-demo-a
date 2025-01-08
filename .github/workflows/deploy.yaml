@@ -37,6 +37,8 @@ jobs:
           DIRECTUS_WEB_URL: ${{ secrets.DIRECTUS_WEB_URL }}
         run: npm run build
         working-directory: ${{ env.BUILD_PATH }}
+      - name: logsome stuff
+        run: echo ${{ env.BUILD_PATH }}/build/client
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -51,9 +53,10 @@ jobs:
     name: Deploy to Cloudflare Pages
     steps:
       - uses: actions/checkout@v4
+      - name: logsome stuff
+        run: echo ${{ env.BUILD_PATH }}/build/client
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
-        working-directory: ${{ env.BUILD_PATH }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
