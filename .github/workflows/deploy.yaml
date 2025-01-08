@@ -52,7 +52,6 @@ jobs:
       deployments: write
     name: Deploy to Cloudflare Pages
     steps:
-      - uses: actions/checkout@v4
       - name: logsome stuff
         run: echo ${{ env.BUILD_PATH }}/build/client
       - name: Deploy
