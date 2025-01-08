@@ -63,5 +63,5 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: disto
-          directory: ${{ env.BUILD_PATH }}/build/client 
+          directory: ./build/client 
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
